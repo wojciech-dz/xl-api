@@ -1,0 +1,44 @@
+<div>
+    <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Name</th>
+            <th>ProductCode</th>
+            <th>ProductId</th>
+            <th>Pkwiu</th>
+            <th>Ean</th>
+            <th>Amount</th>
+            <th>Unit</th>
+            <th>Vat</th>
+            <th>Net</th>
+            <th>Gross</th>
+            <th>NetValue</th>
+            <th>GrossValue</th>
+        </tr>
+    </thead>
+    <tbody id="just_items">
+    {% for invoice_item in invoice_items %}
+        <tr>
+            <td>{{ invoice_item.position }}</td>
+            <td>{{ invoice_item.name }}</td>
+            <td>{{ invoice_item.productCode }}</td>
+            <td>{{ invoice_item.productId }}</td>
+            <td>{{ invoice_item.pkwiu }}</td>
+            <td>{{ invoice_item.ean }}</td>
+            <td>{{ invoice_item.amount }}</td>
+            <td>{{ invoice_item.unit }}</td>
+            <td>{{ invoice_item.vat }}</td>
+            <td>{{ invoice_item.net }}</td>
+            <td>{{ invoice_item.gross }}</td>
+            <td>{{ invoice_item.netValue }}</td>
+            <td>{{ invoice_item.grossValue }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="11">no items found for this invoice</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>

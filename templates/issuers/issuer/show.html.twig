@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Issuer{% endblock %}
+
+{% block body %}
+    <h1>Issuer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ issuer.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ issuer.name }}</td>
+            </tr>
+            <tr>
+                <th>Forename</th>
+                <td>{{ issuer.forename }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ issuer.surname }}</td>
+            </tr>
+            <tr>
+                <th>Nip</th>
+                <td>{{ issuer.nip }}</td>
+            </tr>
+            <tr>
+                <th>Street</th>
+                <td>{{ issuer.street }}</td>
+            </tr>
+            <tr>
+                <th>Postcode</th>
+                <td>{{ issuer.postcode }}</td>
+            </tr>
+            <tr>
+                <th>Town</th>
+                <td>{{ issuer.town }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ issuer.country }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ issuer.email }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ issuer.phone }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ issuer.fax }}</td>
+            </tr>
+            <tr>
+                <th>Www</th>
+                <td>{{ issuer.www }}</td>
+            </tr>
+            <tr>
+                <th>BankAccount</th>
+                <td>{{ issuer.bankAccount }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_issuers_issuer_index') }}">back to list</a>
+
+    <a href="{{ path('app_issuers_issuer_edit', {'id': issuer.id}) }}">edit</a>
+
+    {{ include('issuers/issuer/_delete_form.html.twig') }}
+{% endblock %}

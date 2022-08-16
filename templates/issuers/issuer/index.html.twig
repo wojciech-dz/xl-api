@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Issuer index{% endblock %}
+
+{% block body %}
+    <h1>Issuer index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Forename</th>
+                <th>Surname</th>
+                <th>Nip</th>
+                <th>Street</th>
+                <th>Postcode</th>
+                <th>Town</th>
+                <th>Country</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Fax</th>
+                <th>Www</th>
+                <th>BankAccount</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for issuer in issuers %}
+            <tr>
+                <td>{{ issuer.id }}</td>
+                <td>{{ issuer.name }}</td>
+                <td>{{ issuer.forename }}</td>
+                <td>{{ issuer.surname }}</td>
+                <td>{{ issuer.nip }}</td>
+                <td>{{ issuer.street }}</td>
+                <td>{{ issuer.postcode }}</td>
+                <td>{{ issuer.town }}</td>
+                <td>{{ issuer.country }}</td>
+                <td>{{ issuer.email }}</td>
+                <td>{{ issuer.phone }}</td>
+                <td>{{ issuer.fax }}</td>
+                <td>{{ issuer.www }}</td>
+                <td>{{ issuer.bankAccount }}</td>
+                <td>
+                    <a href="{{ path('app_issuers_issuer_show', {'id': issuer.id}) }}">show</a>
+                    <a href="{{ path('app_issuers_issuer_edit', {'id': issuer.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_issuers_issuer_new') }}">Create new</a>
+{% endblock %}

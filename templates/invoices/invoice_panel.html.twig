@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<h2>Your last documents list:</h2>
+
+	<div class="col-md-8">
+	    {% if document|length %}
+	        <table class="table table-striped table-bordered">
+	            <thead>
+	            <tr>
+	                <th>Lp</th>
+	                <th>Id</th>
+	                <th>Numer faktury</th>
+	                <th>Nazwa odbiorcy</th>
+	                <th class="text-center">Data wystawienia</th>
+	                <th>Wartość brutto</th>
+	            </tr>
+	            {# <tr>{{ documents }}</tr> #}
+	            </thead>
+	            <tbody>
+	                <tr>
+	                    {# <td>{{ v.id }}</td>                     #}
+{#                        <td>#}
+{#                            <a class="btn btn-primary"#}
+{#                               href="{{ url('app_invoice.id', {id: v.id}) }}">{{ v.id }}</a>#}
+{#                        </td>#}
+	                    {# <td>{{ v.id }}</td> #}
+	                    <td>{{ document.kod }}</td>
+	                    <td>{{ document.typ_faktury }}</td>
+						<td>{{ document.numer_faktury }}</td>
+	                    <td>{{ document.data_wystawienia }}</td>
+	                    <td class="text-right">{{ document.wartosc_brutto }}</td>
+	                </tr>
+	            </tbody>
+	        </table>
+	    {% else %}
+	        <p>Brak faktur w tym okresie</p>
+	    {% endif %}
+	</div>
+{% endblock %}

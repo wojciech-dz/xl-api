@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Invoice index{% endblock %}
+
+{% block body %}
+    <h1>Invoice index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Subtype</th>
+                <th>CountingSumType</th>
+                <th>Number</th>
+                <th>IssueDate</th>
+                <th>SaleDate</th>
+                <th>DueDate</th>
+                <th>PaymentDate</th>
+                <th>PaymentAmount</th>
+                <th>Currency</th>
+                <th>Exchange</th>
+                <th>PaymentType</th>
+                <th>Language</th>
+                <th>Template</th>
+                <th>IssuerName</th>
+                <th>ReceiverName</th>
+                <th>OrderNumber</th>
+                <th>Department</th>
+                <th>SendMail</th>
+                <th>Storehouse</th>
+                <th>AutoDocCreate</th>
+                <th>Remarks</th>
+                <th>AdditionalRemarks</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.type }}</td>
+                <td>{{ invoice.subtype }}</td>
+                <td>{{ invoice.countingSumType }}</td>
+                <td>{{ invoice.number }}</td>
+                <td>{{ invoice.issueDate ? invoice.issueDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ invoice.saleDate ? invoice.saleDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ invoice.dueDate ? invoice.dueDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ invoice.paymentDate ? invoice.paymentDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ invoice.paymentAmount }}</td>
+                <td>{{ invoice.currency }}</td>
+                <td>{{ invoice.exchange }}</td>
+                <td>{{ invoice.paymentType }}</td>
+                <td>{{ invoice.language }}</td>
+                <td>{{ invoice.template }}</td>
+                <td>{{ invoice.issuerName }}</td>
+                <td>{{ invoice.receiverName }}</td>
+                <td>{{ invoice.orderNumber }}</td>
+                <td>{{ invoice.department }}</td>
+                <td>{{ invoice.sendMail }}</td>
+                <td>{{ invoice.storehouse }}</td>
+                <td>{{ invoice.autoDocCreate }}</td>
+                <td>{{ invoice.remarks }}</td>
+                <td>{{ invoice.additionalRemarks }}</td>
+                <td>
+                    <a href="{{ path('app_invoice_show', {'id': invoice.id}) }}">show</a>
+                    <a href="{{ path('app_invoice_edit', {'id': invoice.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="25">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_invoice_new') }}">Create new</a>
+{% endblock %}

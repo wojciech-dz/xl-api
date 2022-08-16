@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Invoice index{% endblock %}
+
+{% block body %}
+<div class="invoice-lines" id="invoice-lines">
+    <h1>Lista dokumentów w systemie zewnętrznym:</h1>
+
+    {% if maxPages > 1 %}
+    <div class="col-md-12 text-right m-b-10">
+        <button class="btn btn-danger btn-sm page_first"><span class="fa fa-arrow-left"><<</span></button>
+        <button class="btn btn-danger btn-sm page_prev"><span class="fa fa-arrow-left"><</span></button>
+        <input type="number" class="form-control text-center" id="page_number"
+               style="width: 50px; display: inline-block" value="{{ thisPage }}" min="1"
+               max="{{ maxPages }}"/>
+        <button class="btn btn-danger btn-sm page_next"><span class="fa fa-arrow-right">></span></button>
+        <button class="btn btn-danger btn-sm page_last"><span class="fa fa-arrow-right">>></span></button>
+        <input type="number" class="form-control text-center" id="documents_limit"
+               style="width: 50px; display: inline-block" value="{{ limit }}" min="1"/>
+    </div>
+    {% endif %}
+    <div class="accordion-ajax" data-url="/invoices/1/items">
+{#    <div class="accordion-ajax" data-url="/invoices/1/full-details">#}
+        {% include 'invoices/invoice/basic_invoice_line.html.twig' %}
+    </div>
+    <input type="hidden" id="PATH_invoices_dose" value="{{ path('app_invoices_invoice_dose') }}"/>
+</div>
+{% endblock %}

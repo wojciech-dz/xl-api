@@ -1,0 +1,6 @@
+parameters:
+    invoice.provider: '%env(resolve:INVOICE_PROVIDER)%'
+    invoice.token: '%env(resolve:INVOICE_TOKEN)%'
+    invoice.url: '%env(resolve:INVOICE_URL)%'
+    download.dir: '%env(resolve:DOWNLOAD_DIR)%'
+    

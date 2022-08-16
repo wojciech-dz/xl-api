@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Issuer{% endblock %}
+
+{% block body %}
+    <h1>Edit Issuer</h1>
+
+    {{ include('issuers/issuer/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_issuers_issuer_index') }}">back to list</a>
+
+    {{ include('issuers/issuer/_delete_form.html.twig') }}
+{% endblock %}
