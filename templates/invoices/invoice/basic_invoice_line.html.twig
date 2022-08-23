@@ -1,17 +1,11 @@
 {#<div class="invoice-lines" id="invoice-lines">#}
     {% for invoice in invoices %}
         <div class="accordion-head" data-url="{{ path('app_invoices_invoice_full_details_filtered', {'id': invoice.id}) }}">
-{#        <div class="accordion-head" data-url="{{ path('app_invoices_invoice_items_filtered', {'id': invoice.id}) }}">#}
             <h4>
-{#                    {{ invoice.number }}#}
                 ({{ invoice.externalId }})
                 {{ invoice.issueDate ? invoice.issueDate|date('Y-m-d') : '' }}
-{#                    / {{ invoice.saleDate ? invoice.saleDate|date('Y-m-d') : '' }}#}
                 NIP: {{ invoice.issuerName }}
-{#                    {{ invoice.currency }}#}
-{#                    {{ invoice.netValue }} /#}
                 {{ invoice.grossValue }}
-{#                    {{ invoice.vat }}#}
                 <button class="btn btn-success" type="button" id="get_pdf"
                         data-url="{{ path('app_invoices_invoice_pdf', {'id': invoice.id}) }}">Pobierz PDF</button>
             </h4>

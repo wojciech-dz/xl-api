@@ -66,6 +66,7 @@ class FakturaXLProvider implements \App\Services\Invoices\InvoicesDownloadInterf
             'pdf' => 1,
         ];
         $result = $this->request->get('dokument_export.php', $delay, $parameters);
+        var_dump($result);
 
         $file = new \SplFileObject($this->downloadDir . $parameters['dokument_id'] . '.pdf', 'w');
         $file->fwrite($result['xml']);

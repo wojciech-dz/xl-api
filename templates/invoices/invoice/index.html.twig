@@ -5,12 +5,10 @@
 {% block body %}
     <h1>Lista dokumentów w systemie zewnętrznym:</h1>
 
-{#    {% include 'invoices/invoice/basic_invoice_line.html.twig' %}#}
-
     <div class="accordion-ajax" data-url="/invoices/1/items">
         {% for invoice in invoices %}
             <div class="accordion-head" data-url="{{ path('app_invoices_invoice_items_filtered', {'id': invoice.id}) }}">
-                <h3>
+                <h4>
                     {{ invoice.number }}
                     ({{ invoice.externalId }})
                     {{ invoice.issueDate ? invoice.issueDate|date('Y-m-d') : '' }}
@@ -22,7 +20,7 @@
                     {{ invoice.vat }}
                     <button class="btn btn-success" type="button" id="get_pdf"
                             data-url="{{ path('app_invoices_invoice_pdf', {'id': invoice.id}) }}">Pobierz PDF</button>
-                </h3>
+                </h4>
             </div>
             <div></div>
         {% endfor %}

@@ -14,7 +14,7 @@ class MainMenuController extends AbstractController
     public function index(): Response
     {
         return $this->render('main_menu/index.html.twig', [
-            'controller_name' => 'MainMenuController',
+            'controller_name' => 'Invoice API',
         ]);
     }
 }

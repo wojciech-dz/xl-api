@@ -100,8 +100,10 @@ class InvoiceController extends AbstractController
      */
     public function getPdf(Invoice $invoice): RedirectResponse
     {
+        var_dump($invoice);
         $this->invoicesService->downloadAsPdf($invoice);
-        return new RedirectResponse($this->generateUrl('app_invoices'));
+//        return new RedirectResponse($this->generateUrl('app_invoices'));
+        return new RedirectResponse($this->generateUrl('app_invoices_invoice_show'));
     }
 
     /**
