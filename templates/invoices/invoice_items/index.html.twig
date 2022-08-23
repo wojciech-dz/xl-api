@@ -1,57 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}InvoiceItems index{% endblock %}
+{% block title %}Index produktów{% endblock %}
 
 {% block body %}
-    <h1>InvoiceItems index</h1>
+    <h1>Indeks produktów</h1>
 
-    <table class="table">
+    <table class="dcf-table dcf-table-responsive dcf-table-bordered dcf-table-striped dcf-w-100%">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>InvoiceId</th>
-                <th>Position</th>
-                <th>Name</th>
-                <th>ProductCode</th>
-                <th>ProductId</th>
-                <th>Pkwiu</th>
-                <th>Ean</th>
-                <th>Amount</th>
-                <th>Unit</th>
+                <th>Faktura</th>
+                <th>Pozycja</th>
+                <th>Nazwa</th>
+                <th>Id produktu</th>
+                <th>Ilość</th>
+                <th>Jednostka</th>
                 <th>Vat</th>
                 <th>GrossValue</th>
                 <th>NetValue</th>
-                <th>Gross</th>
-                <th>Net</th>
-                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for invoice_item in invoice_items %}
             <tr>
-                <td>{{ invoice_item.id }}</td>
-                <td>{{ invoice_item.invoiceId }}</td>
+                <td><a href="{{ url('app_invoices_invoice_items_show', {id: invoice_item.id}) }}">{{ invoice_item.id }}</a></td>
+                <td><a href="{{ url('app_invoices_invoice_show', {id: invoice_item.invoice}) }}">{{ invoice_item.invoiceId }}</a></td>
                 <td>{{ invoice_item.position }}</td>
                 <td>{{ invoice_item.name }}</td>
-                <td>{{ invoice_item.productCode }}</td>
                 <td>{{ invoice_item.productId }}</td>
-                <td>{{ invoice_item.pkwiu }}</td>
-                <td>{{ invoice_item.ean }}</td>
                 <td>{{ invoice_item.amount }}</td>
                 <td>{{ invoice_item.unit }}</td>
                 <td>{{ invoice_item.vat }}</td>
                 <td>{{ invoice_item.grossValue }}</td>
                 <td>{{ invoice_item.netValue }}</td>
-                <td>{{ invoice_item.gross }}</td>
-                <td>{{ invoice_item.net }}</td>
-                <td>
-                    <a href="{{ path('app_invoices_invoice_items_show', {'id': invoice_item.id}) }}">show</a>
-                    <a href="{{ path('app_invoices_invoice_items_edit', {'id': invoice_item.id}) }}">edit</a>
-                </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="16">no records found</td>
+                <td colspan="10">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

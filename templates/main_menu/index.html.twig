@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainMenuController!{% endblock %}
+{% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
 <style>
@@ -9,14 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>{{ controller_name }}</h1>
 
-    This friendly message is coming from:
     <ul>
-        <li><a href="{{ url('app_invoices_invoice_index') }}">Lista pobranych faktur</a></li>
+        <li><a href="{{ url('app_invoices_invoice_dose') }}">Lista pobranych faktur</a></li>
         <li><a href="{{ url('app_invoices_invoice_items_index') }}">Lista produktów</a></li>
         <li><a href="{{ url('app_issuers_issuer_index') }}">Lista kontrahentów</a></li>
-{#        <li>Your template at <code><a href="{{ '/var/www/fakturaXL-api-imports/templates/main_menu/index.html.twig'|file_link(0) }}">templates/main_menu/index.html.twig</a></code></li>#}
     </ul>
 </div>
 {% endblock %}

@@ -3,122 +3,95 @@
 {% block title %}Invoice{% endblock %}
 
 {% block body %}
-    <h1>Invoice</h1>
-
-    <table class="table">
+    <table class="dcf-table dcf-table-responsive dcf-table-bordered dcf-table-striped dcf-w-100%">
+        <caption>Dokument [{{ invoice.id }}]</caption>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ invoice.id }}</td>
-            </tr>
-            <tr>
-                <th>ExternalId</th>
-                <td>{{ invoice.externalId }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ invoice.type }}</td>
-            </tr>
-            <tr>
-                <th>Subtype</th>
-                <td>{{ invoice.subtype }}</td>
-            </tr>
-            <tr>
-                <th>CountingSumType</th>
-                <td>{{ invoice.countingSumType }}</td>
-            </tr>
-            <tr>
-                <th>Number</th>
-                <td>{{ invoice.number }}</td>
-            </tr>
-            <tr>
-                <th>IssueDate</th>
-                <td>{{ invoice.issueDate ? invoice.issueDate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>SaleDate</th>
-                <td>{{ invoice.saleDate ? invoice.saleDate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DueDate</th>
-                <td>{{ invoice.dueDate ? invoice.dueDate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>PaymentDate</th>
-                <td>{{ invoice.paymentDate ? invoice.paymentDate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>PaymentAmount</th>
-                <td>{{ invoice.paymentAmount }}</td>
-            </tr>
-            <tr>
-                <th>Currency</th>
-                <td>{{ invoice.currency }}</td>
-            </tr>
-            <tr>
-                <th>Exchange</th>
-                <td>{{ invoice.exchange }}</td>
-            </tr>
-            <tr>
-                <th>PaymentType</th>
-                <td>{{ invoice.paymentType }}</td>
-            </tr>
-            <tr>
-                <th>Language</th>
-                <td>{{ invoice.language }}</td>
-            </tr>
-            <tr>
-                <th>Template</th>
-                <td>{{ invoice.template }}</td>
-            </tr>
-            <tr>
-                <th>IssuerName</th>
-                <td>{{ invoice.issuerName }}</td>
-            </tr>
-            <tr>
-                <th>ReceiverName</th>
-                <td>{{ invoice.receiverName }}</td>
-            </tr>
-            <tr>
-                <th>OrderNumber</th>
-                <td>{{ invoice.orderNumber }}</td>
-            </tr>
-            <tr>
-                <th>Department</th>
-                <td>{{ invoice.department }}</td>
-            </tr>
-            <tr>
-                <th>SendMail</th>
-                <td>{{ invoice.sendMail }}</td>
-            </tr>
-            <tr>
-                <th>Storehouse</th>
-                <td>{{ invoice.storehouse }}</td>
-            </tr>
-            <tr>
-                <th>AutoDocCreate</th>
-                <td>{{ invoice.autoDocCreate }}</td>
-            </tr>
-            <tr>
-                <th>Remarks</th>
-                <td>{{ invoice.remarks }}</td>
-            </tr>
-            <tr>
-                <th>AdditionalRemarks</th>
-                <td>{{ invoice.additionalRemarks }}</td>
-            </tr>
-            <tr>
-                <th>NetValue</th>
-                <td>{{ invoice.netValue }}</td>
-            </tr>
-            <tr>
-                <th>GrossValue</th>
-                <td>{{ invoice.grossValue }}</td>
-            </tr>
-            <tr>
-                <th>Vat</th>
-                <td>{{ invoice.vat }}</td>
-            </tr>
+        <tr>
+            <th>id</th>
+            <th>numer</th>
+            <th>numer zewnętrzny</th>
+            <th>typ dokumentu</th>
+            <th>podtyp</th>
+            <th>CountingSumType ???</th>
+        </tr>
+        <tr>
+            <td>{{ invoice.id }}</td>
+            <td>{{ invoice.number }}</td>
+            <td>{{ invoice.externalId }}</td>
+            <td>{{ invoice.type }}</td>
+            <td>{{ invoice.subtype }}</td>
+            <td>{{ invoice.countingSumType }}</td>
+        </tr>
+        <tr>
+            <th>data wystawienia</th>
+            <th>data sprzedaży</th>
+            <th>termin płatności</th>
+            <th>data opłacenia</th>
+            <th>kwota opłacona</th>
+            <th>sposób płatności</th>
+        </tr>
+        <tr>
+            <td>{{ invoice.issueDate ? invoice.issueDate|date('Y-m-d') : '' }}</td>
+            <td>{{ invoice.saleDate ? invoice.saleDate|date('Y-m-d') : '' }}</td>
+            <td>{{ invoice.dueDate ? invoice.dueDate|date('Y-m-d') : '' }}</td>
+            <td>{{ invoice.paymentDate ? invoice.paymentDate|date('Y-m-d') : '' }}</td>
+            <td>{{ invoice.paymentAmount }}</td>
+            <td>{{ invoice.paymentType }}</td>
+        </tr>
+        <tr>
+            <th>vat</th>
+            <th>wartość netto</th>
+            <th>wartość brutto</th>
+            <th colspan="3"></th>
+        </tr>
+        <tr>
+            <td>{{ invoice.vat }}</td>
+            <td>{{ invoice.netValue }}</td>
+            <td>{{ invoice.grossValue }}</td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <th>waluta</th>
+            <th>kurs</th>
+            <th colspan="2">język</th>
+            <th colspan="2">szablon</th>
+        </tr>
+        <tr>
+            <td>{{ invoice.currency }}</td>
+            <td>{{ invoice.exchange }}</td>
+            <td colspan="2">{{ invoice.language }}</td>
+            <td colspan="2">{{ invoice.template }}</td>
+        </tr>
+        <tr>
+            <th colspan="2">wystawca</th>
+            <th colspan="2">kontrahent</th>
+            <th colspan="2">mail</th>
+        </tr>
+        <tr>
+            <td colspan="2">{{ invoice.issuerName }}</td>
+            <td colspan="2">{{ invoice.receiverName }}</td>
+            <td colspan="2">{{ invoice.sendMail }}</td>
+        </tr>
+        <tr>
+            <th colspan="2">nr zamówienia</th>
+            <th>departament</th>
+            <th>magazyn</th>
+            <th colspan="2">autoDocCreate ???</th>
+        </tr>
+        <tr>
+            <td colspan="2">{{ invoice.orderNumber }}</td>
+            <td>{{ invoice.department }}</td>
+            <td>{{ invoice.storehouse }}</td>
+            <td colspan="2">{{ invoice.autoDocCreate }}</td>
+        </tr>
+        <tr>
+            <th colspan="3">uwagi</th>
+            <th colspan="3">dodatkowe uwagi</th>
+        </tr>
+        <tr>
+            <td colspan="3">{{ invoice.remarks }}</td>
+            <td colspan="3">{{ invoice.additionalRemarks }}</td>
+        </tr>
         </tbody>
     </table>
     <input type="hidden" id="PATH_items_list" value="{{ path('app_invoices_invoice_items_filtered', {'id': invoice.id}) }}"/>
